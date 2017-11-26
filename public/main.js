@@ -1,5 +1,6 @@
 var input = document.querySelector('input')
 var button = document.querySelector('button')
+var error = document.getElementById('error')
 
 function sendData(data) {
   input.value = '';
@@ -16,14 +17,29 @@ function sendData(data) {
   })
 }
 
+function errorMessage() {
+  error.style.display = 'block';
+}
+
 button.addEventListener('click', (e) => {
   e.preventDefault()
-  sendData(input.value)
+
+  if (input.value != '' || input.value != '') {
+    sendData(input.value)
+    error.style.display = 'none';
+  } else {
+    errorMessage()
+  }
 })
 
 input.addEventListener('keyup', (e) => {
   e.preventDefault()
   if (e.keyCode === 13) {
-    sendData(input.value)
+    if (input.value != '' || input.value != '') {
+      sendData(input.value)
+      error.style.display = 'none';
+    } else {
+      errorMessage()
+    }
   }
 })
