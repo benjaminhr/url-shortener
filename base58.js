@@ -1,7 +1,7 @@
 var alphabet = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
 var base = alphabet.length
 
-function encoded(num) {
+var encoded = function(num) {
   var encoded = ''
   while (num) {
     var remainder = num % base
@@ -11,7 +11,7 @@ function encoded(num) {
   return encoded
 }
 
-function decoded(str) {
+var decoded = function(str) {
   var decoded = 0
   while (str) {
     var index = alphabet.indexOf(str[0])
@@ -22,5 +22,5 @@ function decoded(str) {
   return decoded
 }
 
-module.exports.encode = encoded()
-module.exports.decode = decoded()
+exports.encode = encoded;
+exports.decode = decoded;

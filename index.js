@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const base = require('./base58.js')
 
 app.use(express.static('public'))
 
