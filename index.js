@@ -43,6 +43,26 @@ app.post('/api/url', (req,res) => {
   res.status(200)
 })
 
+app.get('/:id', (req,res) => {
+  var decodedID = base.decode(req.params.id)
+  
+  var searchIdSQL = `SELECT url FROM urls WHERE id = ${decodedID}`
+  con.query(searchIdSQL, (err,result) => {
+    if (err) throw err
+
+    var redirectUrl = result[0].url
+    var regPattern = "^(http|https)://"
+    var reg = new RegExp(regPattern)
+
+    if (reg.test(redirectUrl)) {
+      res.redirect(redirectUrl)
+    } else {
+      redirectUrl = "http://" + redirectUrl;
+      res.redirect(redirectUrl)
+    }
+  })
+})
+
 const port = process.env.PORT || 8080
 app.listen(port)
 
