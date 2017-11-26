@@ -7,8 +7,8 @@ const mysql = require('mysql')
 var con = mysql.createConnection({
   host:'localhost',
   database:'urls',
-  user:'',
-  password:''
+  user:'root',
+  password:'qwerty'
 })
 
 app.use(bodyParser.urlencoded({ extended: true }));
