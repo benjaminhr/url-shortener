@@ -20,15 +20,29 @@ app.get('/', (req,res) => {
 })
 
 app.post('/api/url', (req,res) => {
+  var currentUrl = req.body.currentUrl
   var url = req.body.url
   var timestamp = Math.round(Date.now() / 1000)
-  var sql = `INSERT INTO urls (url,timestamp) VALUES ("${url}", ${timestamp})`
+  var id;
+  var insertSQL = `INSERT INTO urls (url,timestamp) VALUES ("${url}", ${timestamp})`
 
-  con.query(sql, (err,result) => {
-    
+  con.query(insertSQL, (err,result) => {
+    if (err) throw err
+    id = result.insertId
+    encodeData(id, currentUrl)
   })
+
+  function encodeData(id, currentUrl) {
+    var path = base.encode(id)
+    var encodedUrl = currentUrl + path
+    res.json({
+      url:encodedUrl
+    })
+  }
+
   res.status(200)
 })
 
 const port = process.env.PORT || 8080
 app.listen(port)
+

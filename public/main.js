@@ -1,10 +1,10 @@
 var input = document.querySelector('input')
 var button = document.querySelector('button')
 var error = document.getElementById('error')
+var result = document.getElementById('result')
 
 function sendData(data) {
   input.value = '';
-  console.log(data)
   
   var url = window.location.href
 
@@ -12,10 +12,17 @@ function sendData(data) {
     headers: { "Content-Type": "application/json" },
     method:'POST',
     body: JSON.stringify({
-      "url":data
+      "url":data,
+      "currentUrl":url
     })
   })
-}
+  .then(data => data.json())
+  .then((json) => {
+    var respUrl = json.url
+    result.innerHTML = respUrl
+    result.style.display = 'block'
+  })
+} 
 
 function errorMessage() {
   error.style.display = 'block';
