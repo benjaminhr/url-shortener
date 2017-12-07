@@ -28,6 +28,7 @@ function errorMessage() {
   error.style.display = 'block';
 }
 
+// these two event listeners basically do the same thing - form submitting / resetting
 button.addEventListener('click', (e) => {
   e.preventDefault()
 
