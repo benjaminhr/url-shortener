@@ -64,5 +64,7 @@ app.get('/:id', (req,res) => {
 })
 
 const port = process.env.PORT || 8080
-app.listen(port)
+app.listen(port, () => {
+  console.log('🎉')
+})
 
