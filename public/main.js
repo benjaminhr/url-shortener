@@ -33,8 +33,8 @@ var checkInput = function (input) {
   if (input == '' || input == ' ') {
     errorMessage('URL cannot be empty')
     return false
-  } else if (!input.includes('http') || !input.includes('https')) {
-    errorMessage('URL is not valid, requires "http://" or "https://"')
+  } else if (!input.includes('www')) {
+    errorMessage('URL is not valid.')
     return false
   } else {
     error.style.display = 'none';
@@ -47,8 +47,9 @@ button.addEventListener('click', (e) => {
   e.preventDefault()
 
   if (checkInput(input.value)) {
+    console.log('submitted')
     sendData(input.value)
-  }
+  } 
 })
 
 // Using keyup instead of change
@@ -58,6 +59,7 @@ input.addEventListener('keyup', (e) => {
 
   if (e.keyCode === 13) {
     if (checkInput(input.value)) {
+      console.log('submitted')
       sendData(input.value)
     }
   }
