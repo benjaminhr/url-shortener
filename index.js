@@ -1,14 +1,15 @@
 const express = require('express')
 const app = express()
-const base = require('./base58.js')
+const base = require('./base58/base58.js')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
+const config = require('./db/config.js')
 
 var con = mysql.createConnection({
-  host:'localhost',
-  database:'urls',
-  user:'root',
-  password:'qwerty'
+  host:config.host,
+  database:config.database,
+  user:config.user,
+  password:config.password
 })
 
 app.use(bodyParser.urlencoded({ extended: true }));
