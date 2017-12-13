@@ -62,35 +62,3 @@ input.addEventListener('keyup', (e) => {
     }
   }
 })
-
-
-
-
-// function errorMessage() {
-//   error.style.display = 'block';
-// }
-
-// // these two event listeners basically do the same thing - form submitting / resetting
-// button.addEventListener('click', (e) => {
-//   e.preventDefault()
-
-//   if (input.value != '' || input.value != '') {
-//     sendData(input.value)
-//     error.style.display = 'none';
-//   } else {
-//     errorMessage()
-//   }
-// })
-
-// input.addEventListener('keyup', (e) => {
-//   e.preventDefault()
-//   if (e.keyCode === 13) {
-//     if (input.value != '' || input.value != '') {
-//       sendData(input.value)
-//       error.style.display = 'none';
-//     } else {
-//       errorMessage()
-//     }
-//   }
-// })
-
