@@ -96,7 +96,7 @@ button:hover {
 
 #error {
   display:none;
-  color:coral;
+  color:#555;
   font-size:15px;
   padding:10px;
   background-color:white;
