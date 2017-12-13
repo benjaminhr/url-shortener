@@ -47,7 +47,6 @@ button.addEventListener('click', (e) => {
   e.preventDefault()
 
   if (checkInput(input.value)) {
-    console.log('submitted')
     sendData(input.value)
   } 
 })
@@ -59,7 +58,6 @@ input.addEventListener('keyup', (e) => {
 
   if (e.keyCode === 13) {
     if (checkInput(input.value)) {
-      console.log('submitted')
       sendData(input.value)
     }
   }
