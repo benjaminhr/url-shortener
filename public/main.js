@@ -25,8 +25,10 @@ function sendData(data) {
 } 
 
 var errorMessage = function (msg) {
+  error.classList.add('error-shake')
   error.style.display = 'block'
   error.innerText = msg
+  setTimeout(() => { error.classList.remove('error-shake') }, 600)
 }
 
 var checkInput = function (input) {
@@ -62,3 +64,10 @@ input.addEventListener('keyup', (e) => {
     }
   }
 })
+
+// this fixes some weird bug
+// which only appears on mobile
+if (/Mobi/.test(navigator.userAgent)) {
+  let button = document.querySelector('button')
+  button.style.height = '47.5px';
+}
