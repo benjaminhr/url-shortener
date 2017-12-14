@@ -3,6 +3,7 @@ const app = express()
 const base = require('./base58/base58.js')
 const bodyParser = require('body-parser')
 const mysql = require('mysql')
+const helmet = require('helmet')
 const config = require('./db/config.js')
 
 var con = mysql.createConnection({
@@ -12,6 +13,7 @@ var con = mysql.createConnection({
   password:config.password
 })
 
+app.use(helmet())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'))
@@ -64,7 +66,7 @@ app.get('/:id', (req,res) => {
   })
 })
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8000
 app.listen(port, () => {
   console.log('🎉')
 })
